@@ -16,7 +16,7 @@ services:
   environment:
    - DB_HOST=db
    - DB_PORT=3306
-   - DB_DATABASE=laravel
+   - DB_DATABASE=db_events
    - DB_USERNAME=root
    - DB_PASSWORD=root
 
@@ -58,7 +58,7 @@ services:
   ports:
    - "3306:3306"
   environment:
-   - MYSQL_DATABASE=laravel
+   - MYSQL_DATABASE=db_events
    - MYSQL_ROOT_PASSWORD=root
    - MYSQL_USER=root
   networks:
