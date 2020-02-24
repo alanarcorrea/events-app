@@ -15,7 +15,7 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        return CompanyResource::collection(Company::paginate(config('paginage.DEFAULT_PAGINATE')));
+        return CompanyResource::collection(Company::paginate(config('paginate.DEFAULT_PAGINATE')));
     }
 
     public function create()

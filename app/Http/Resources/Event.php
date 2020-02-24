@@ -16,7 +16,7 @@ class Event extends JsonResource
             'hour' => $this->hour,
             'place' => $this->place,
             'confirmation_deadline' => $this->confirmation_deadline,
-            'minimun_people' => $this->minimun_people,
+            'minimum_people' => $this->minimum_people,
             'status' => $this->status, 
         ];
     }

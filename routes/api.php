@@ -29,3 +29,5 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::resource('companies','CompanyController');
+Route::resource('events','EventController');
+Route::resource('friends','FriendController');

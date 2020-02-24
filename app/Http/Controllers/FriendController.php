@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\Friend as FriendResource;
+use App\Http\Requests\StoreFriend;
+use App\Http\Requests\UpdateFriend;
+use App\Services\Friends\Store;
+use App\Services\Friends\Update;
+use App\Services\Friends\Destroy;
+use App\Friend;
 
 
 class FriendController extends Controller
 {
     public function index()
     {
-        return FriendResource::collection(Friend::paginate(config('paginage.DEFAULT_PAGINATE')));
+        return FriendResource::collection(Friend::paginate(config('paginate.DEFAULT_PAGINATE')));
     }
 
     public function create()

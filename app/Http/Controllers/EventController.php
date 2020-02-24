@@ -9,13 +9,13 @@ use App\Http\Requests\UpdateEvent;
 use App\Services\Events\Store;
 use App\Services\Events\Update;
 use App\Services\Events\Destroy;
-
+use App\Event;
 
 class EventController extends Controller
 {
     public function index()
     {
-        return EventResource::collection(Event::paginate(config('paginage.DEFAULT_PAGINATE')));
+        return EventResource::collection(Event::paginate(config('paginate.DEFAULT_PAGINATE')));
     }
 
     public function create()

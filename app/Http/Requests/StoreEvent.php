@@ -28,18 +28,21 @@ class StoreEvent extends FormRequest
                 'date'
             ],
             'hour' => [
-                'required',
-                'numeric'
+                'required'
             ],
             'place' => [
                 'required',
                 'max:100'
             ],
+            'address' => [
+                'required',
+                'max:200'
+            ],
             'confirmation_deadline' => [
                 'required',
                 'date'
             ],
-            'minimun_people' => [
+            'minimum_people' => [
                 'required',
                 'numeric'
             ],

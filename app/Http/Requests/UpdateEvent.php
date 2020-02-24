@@ -33,7 +33,7 @@ class UpdateEvent extends FormRequest
             'confirmation_deadline' => [
                 'date'
             ],
-            'minimun_people' => [
+            'minimum_people' => [
                 'numeric'
             ],
         ];

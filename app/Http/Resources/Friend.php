@@ -13,7 +13,7 @@ class Friend extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'rg' => $this->rg,
-            'usuario' => UserResource($this->user_id),
+            'usuario' => $this->user_id,
         ];
     }
 }

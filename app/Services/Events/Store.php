@@ -15,9 +15,10 @@ class Store
             'date' => request()->date,
             'hour' => request()->hour,
             'place' => request()->place,
+            'address' => request()->address,
             'confirmation_deadline' => request()->confirmation_deadline,
-            'minimun_people' => request()->minimun_people,
-            'status' => config('status.CREATED'),
+            'minimum_people' => request()->minimum_people,
+            'status' => 'open',
         ]);
 
         return $event;
