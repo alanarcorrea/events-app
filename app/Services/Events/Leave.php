@@ -9,7 +9,7 @@ use App\UserWallet;
 use App\EventUser;
 use Exception;
 
-class Participate
+class Leave
 {
     public function handle ($event): void
     {
@@ -17,21 +17,19 @@ class Participate
 
         $eventWallet = EventWallet::where('event_id', $event->id)->first();
 
-        if ($userWallet->value < $eventWallet->unit_value) {
-            throw new Exception;
-        };
-
         $userWallet->update([
-            'value' => $userWallet->value - $eventWallet->unit_value,
+            'value' => $userWallet->value + $eventWallet->unit_value,
         ]);
 
         $eventWallet->update([
-           'amount' => $eventWallet->amount + $eventWallet->unit_value,
+           'amount' => $eventWallet->amount - $eventWallet->unit_value,
         ]);
- 
-        $event->participants()->attach(auth()->id());
 
-
+        EventUser::create([
+            'user_id' => auth()->id(),
+            'event_id' => $event->id,
+        ]);
+            
         $participants = EventUser::where('event_id', $event->id)->count();
 
         if ($participants >= $event->minimum_people) {

@@ -9,6 +9,8 @@ use App\Http\Requests\LoginUser;
 use App\Http\Requests\RegisterUser;
 use App\Services\Auth\Login;
 use App\Services\Auth\Register;
+use App\Http\Resources\User as UserResource;
+
 
 use App\User;
 class AuthController extends Controller
@@ -20,14 +22,6 @@ class AuthController extends Controller
 
     public function login(LoginUser $request, Login $loginService)
     {
-        // $credentials = $request->only('email', 'password');
-
-        // if ($token = $this->guard()->attempt($credentials)) {
-        //     return $this->respondWithToken($token);
-        // }
-
-        // return response()->json(['error' => 'Unauthorized'], 401);
-
         try {
             $data = $loginService->signUser($request->toArray());
 
@@ -41,7 +35,6 @@ class AuthController extends Controller
 
     public function me()
     {
-        // return response()->json($this->guard()->user());
         return response()->json(
             new UserResource(auth()->user())
         );
@@ -49,7 +42,6 @@ class AuthController extends Controller
 
     public function logout()
     {
-        // $this->guard()->logout();
         auth()->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
@@ -68,11 +60,6 @@ class AuthController extends Controller
             'expires_in' => $this->guard()->factory()->getTTL() * 60
         ]);
     }
-
-    // public function guard()
-    // {
-    //     return Auth::guard();
-    // }
 
     public function register(RegisterUser $request, Register $registerService)
     {

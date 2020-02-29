@@ -3,6 +3,8 @@
 namespace App\Services\Auth;
 
 use App\User;
+use App\UserWallet;
+use Illuminate\Support\Facades\Hash;
 use Flugg\Responder\Exceptions\Http\UnauthorizedException;
 
 class Register
@@ -11,7 +13,7 @@ class Register
     {
         $user = User::create([
             'email'    => request()->email,
-            'password' => request()->password,
+            'password' => Hash::make(request()->password),
             'name' => request()->name,
             'avatar' => request()->avatar,
             'phone' => request()->phone,
@@ -22,6 +24,15 @@ class Register
         // $user->assignRole('colleague');
 
         $token = auth()->login($user);
+
+        $userWallet = UserWallet::create([
+            'user_id' => $user->id,
+            'value' => 50,
+        ]);
+
+        if (! $userWallet){
+            throw new Exception;
+        }
 
         return [
             'access_token' => $token,

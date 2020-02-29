@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\EventUser;
 
 class EventUserController extends Controller
 {
@@ -18,7 +19,10 @@ class EventUserController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $participant = EventUser::create([
+            'user_id' => auth()->id(),
+            'event_id' => request()->event_id,
+        ]);
     }
 
     public function show($id)

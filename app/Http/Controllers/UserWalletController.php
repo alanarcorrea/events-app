@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UserWallet;
 
 class UserWalletController extends Controller
 {
     public function index()
     {
-        //
+        return UserWallet::all();
     }
 
     public function create()

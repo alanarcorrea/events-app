@@ -14,7 +14,7 @@ class Event extends Model
         return $this->hasOne('App\EventWallet');
     }
 
-    public function users()
+    public function participants()
     {
         return $this->belongsToMany('App\User');
     }
