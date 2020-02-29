@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\EventWallet;
 class EventWalletController extends Controller
 {
     public function index()
     {
-        //
+        return EventWallet::all();
     }
 
     public function create()

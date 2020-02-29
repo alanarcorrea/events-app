@@ -3,6 +3,7 @@
 namespace App\Services\Events;
 
 use Illuminate\Validation\UnauthorizedException;
+use App\EventWallet;
 use App\Event;
 
 class Store
@@ -21,6 +22,20 @@ class Store
             'status' => 'open',
         ]);
 
+        if (! $event) {
+            throw new Exception;
+        }
+
+        $eventWallet = EventWallet::create([
+            'event_id' => $event->id,
+            'unit_value' => request()->unit_value,
+            'amount' => request()->unit_value,
+        ]);
+
+        if (! $eventWallet) {
+            throw new Exception;
+        }
+        
         return $event;
     }
 }

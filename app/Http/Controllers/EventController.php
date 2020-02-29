@@ -9,7 +9,9 @@ use App\Http\Requests\UpdateEvent;
 use App\Services\Events\Store;
 use App\Services\Events\Update;
 use App\Services\Events\Destroy;
+use App\Services\Events\Participate;
 use App\Event;
+
 
 class EventController extends Controller
 {
@@ -73,6 +75,22 @@ class EventController extends Controller
     {
         try {
             $destroyService->handle($event);
+
+            return response()->json([
+			    'message' => __('messages.attribute_deleted', ['attribute' => __('attributes.skill')]),
+            ], 201);
+
+        } catch(ExceptionAlias $exception) {
+             return response()->json([
+                 'error' => $exception->getMessage()
+             ], 403);
+        }
+    }
+
+    public function participate(Event $event, Participate $participateService) {
+        dd(auth()->check());
+        try {
+            $participateService->handle($event);
 
             return response()->json([
 			    'message' => __('messages.attribute_deleted', ['attribute' => __('attributes.skill')]),

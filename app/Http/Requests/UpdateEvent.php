@@ -36,6 +36,9 @@ class UpdateEvent extends FormRequest
             'minimum_people' => [
                 'numeric'
             ],
+            'unit_value' => [
+                'numeric'
+            ]
         ];
     }
 }

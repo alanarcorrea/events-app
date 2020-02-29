@@ -46,6 +46,10 @@ class StoreEvent extends FormRequest
                 'required',
                 'numeric'
             ],
+            'unit_value' => [
+                'required',
+                'numeric'
+            ],
         ];
     }
 }

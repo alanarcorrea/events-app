@@ -32,3 +32,5 @@ Route::resource('companies','CompanyController');
 Route::resource('events','EventController');
 Route::resource('friends','FriendController');
 Route::resource('users','UserController');
+Route::get('eventwallets', 'EventWalletController@index');
+Route::post('events/{event}/participate', 'EventController@participate');
